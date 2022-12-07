@@ -13,5 +13,7 @@ namespace ASPTest.Services
         };
 
         public IEnumerable<Beer> Get() => _beers;
+
+        public Beer? Get(int id) => _beers.FirstOrDefault(x => x.Id == id); //Obtiene el primero por defecto
     }
 }

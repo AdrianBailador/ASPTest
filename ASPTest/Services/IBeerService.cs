@@ -2,7 +2,7 @@
 
 namespace ASPTest.Services
 {
-    public interface IBeer
+    public interface IBeerService
     {
         public IEnumerable<Beer> Get(); //Nos devuelva toda la información de cerveza
 

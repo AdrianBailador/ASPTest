@@ -3,8 +3,8 @@
     public class Beer
     {
         public int Id { get; set; }
-        public int Name { get; set; }
-        public int Brand { get; set; }
+        public string Name { get; set; }
+        public string Brand { get; set; }
 
     }
 }
