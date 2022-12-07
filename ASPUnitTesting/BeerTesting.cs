@@ -1,4 +1,5 @@
 using ASPTest.Controllers;
+using ASPTest.Models;
 using ASPTest.Services;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,6 +23,15 @@ namespace ASPUnitTesting
             var result = _controller.Get();//accion que vamos a evaluar, preparacion, ejecución y si es correcto o no es correcto
 
             Assert.IsType<OkObjectResult>(result);//mandamos el resultado
+        }
+
+        [Fact]
+        public void Get_Quantity()
+        {
+            var result = (OkObjectResult)_controller.Get();
+
+            var beers = Assert.IsType<List<Beer>>(result.Value);
+            Assert.True(beers.Count>0);
         }
     }
 }
