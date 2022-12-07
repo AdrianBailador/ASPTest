@@ -1,5 +1,6 @@
 using ASPTest.Controllers;
 using ASPTest.Services;
+using Microsoft.AspNetCore.Mvc;
 
 namespace ASPUnitTesting
 {
@@ -16,9 +17,11 @@ namespace ASPUnitTesting
         }
 
         [Fact]
-        public void Test1()
+        public void Get_Ok()
         {
+            var result = _controller.Get();//accion que vamos a evaluar, preparacion, ejecución y si es correcto o no es correcto
 
+            Assert.IsType<OkObjectResult>(result);//mandamos el resultado
         }
     }
 }
