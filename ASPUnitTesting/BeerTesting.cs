@@ -33,5 +33,49 @@ namespace ASPUnitTesting
             var beers = Assert.IsType<List<Beer>>(result.Value);
             Assert.True(beers.Count>0);
         }
+
+        [Fact]
+        public void GetById_Ok()
+        {
+            //Preparación del escenario
+            int id = 1;
+
+            //ejecución
+            var result = _controller.GetById(id);
+
+            //El hecho
+            Assert.IsType<OkObjectResult>(result);
+
+        }
+        [Fact]
+        public void GetById_Exists()
+        {
+            //Preparación del escenario
+            int id = 1;
+
+            //ejecución
+            var result = (OkObjectResult)_controller.GetById(id);
+
+            //El hecho
+            var beer = Assert.IsType<Beer>(result?.Value);
+            Assert.True(beer!=null);
+            Assert.Equal(beer?.Id,id);
+
+        }
+
+        [Fact]
+        public void GetById_NotFound()
+        {
+            //Preparación del escenario
+            int id = 11;
+
+            //ejecución
+            var result = _controller.GetById(id);
+
+            //El hecho
+            var beer = Assert.IsType<NotFoundResult>(result);
+            
+
+        }
     }
 }
